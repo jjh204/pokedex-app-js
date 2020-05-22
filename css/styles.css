@@ -1,0 +1,259 @@
+:root {
+  --primary-color: #233f5c;
+  --secondary-color: #cbd7fb;
+  --tertiary-color: #9f9ff4;
+  --navbar-color: #343a40;
+  --modal-primary: #fbefcb;
+  --modal-secondary: #f7e09c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+h1 {
+  margin-left: 1.2em;
+  margin-top: 80px;
+  font-weight: 700;
+  font-size: 4em;
+  color: var(--navbar-color);
+  box-shadow: 5px 5px 5px var(--navbar-color);
+  width: 94%;
+}
+
+.page-header {
+  background: var(--navbar-color);
+  display: flex;
+  width: 100%;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1030;
+}
+
+.page-header_item {
+  flex: 0 1 200px;
+}
+
+.page-header_item:last-child {
+  flex-grow: 2;
+  text-align: right;
+}
+
+.navigation-list {
+  list-style-type: none;
+}
+
+.navigation-list li {
+  display: inline-block;
+  margin-right: 70px;
+}
+
+.navigation-list_item--active {
+  text-decoration: none;
+}
+
+.img_logo {
+  margin: 8px;
+  max-width: 220px;
+  max-height: 50px;
+  cursor: pointer;
+}
+
+.img_logo:hover,
+.img_logo:focus {
+  opacity: 0.8;
+}
+
+a {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.pokemon-list li {
+  margin: 0 auto;
+  list-style: none;
+}
+
+.pokemon-list button {
+  border: 1px solid #233f5c;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px var(--primary-color);
+  background-color: var(--tertiary-color);
+  width: 40%;
+  margin: 0.5em;
+  padding: 20px;
+}
+
+.pokemon-list button:hover,
+.pokemon-list button:focus {
+  cursor: pointer;
+  opacity: 85%;
+}
+
+.is-hidden {
+  display: none;
+}
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.modal {
+  margin: auto;
+  grid-column: 2 / 2;
+  background: var(--modal-primary);
+  padding: 15px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.modal h1 {
+  max-width: 85%;
+}
+
+.modal div {
+  margin-left: 40px;
+  background: var(--modal-secondary);
+  border: 0.5px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px var(--primary-color);
+  font-size: 0.9em;
+  text-align: left;
+  width: 50%;
+  padding: 0.8em;
+}
+
+.pokemon-details {
+  font-size: 1.2em;
+}
+
+.modal-close {
+  float: right;
+  border: 0;
+  background: none;
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  text-decoration: none;
+}
+
+.modal img {
+  float: right;
+  margin-right: 50px;
+  min-width: 180px;
+  max-width: 300px;
+  background: var(--modal-secondary);
+  border: 0.5px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px var(--primary-color);
+}
+
+@media all and (min-width: 800px) and (max-width: 1300px) {
+  .modal {
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  .modal img {
+    float: none;
+    display: inline;
+  }
+
+  .modal div {
+    width: 86%;
+    margin: 0 auto;
+  }
+
+  .modal img {
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 800px) {
+
+  .img_logo {
+    max-width: 150px;
+    max-height: 30px;
+  }
+  .navigation-list li {
+      display: block;
+      margin: 10px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-left: 0.9em;
+      margin-top: 120px;
+    }
+
+  .pokemon-list li {
+    text-align: center;
+    margin-left: -4em;
+  }
+
+  .pokemon-list button {
+    width: 85%;
+  }
+
+  #modal-container.is-visible {
+    grid-template-columns: 1fr;
+    padding: 1.5em;
+  }
+
+  .modal {
+    grid-column: auto / auto;
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  .modal img {
+    float: none;
+    display: inline;
+    margin: 0 auto;
+  }
+
+  .modal div {
+    width: 86%;
+    margin: 0 auto;
+  }
+}
