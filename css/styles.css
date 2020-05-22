@@ -27,7 +27,7 @@ h1 {
   font-size: 4em;
   color: var(--navbar-color);
   box-shadow: 5px 5px 5px var(--navbar-color);
-  width: 94%;
+  width: 90%;
 }
 
 .page-header {
