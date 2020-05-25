@@ -212,8 +212,9 @@ a:active {
   }
   .navigation-list li {
       display: block;
-      margin: 10px;
+      margin: 10px 20px;
       font-size: 14px;
+      padding-left: 4px;
     }
 
     h1 {
@@ -224,7 +225,6 @@ a:active {
 
   .pokemon-list li {
     text-align: center;
-    margin-left: -4em;
   }
 
   .pokemon-list button {
