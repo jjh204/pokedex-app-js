@@ -253,6 +253,7 @@ a:active {
     grid-column: auto / auto;
     text-align: center;
     font-size: 0.8em;
+    margin-top: 100px;
   }
 
   .modal img {
