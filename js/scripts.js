@@ -1,9 +1,9 @@
-var pokemonRepository = (function () {
+const pokemonRepository = (function () {
   // added all my global variables at the top to more easily see them.
-  var pokemonList = [];
-  var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
-  var loadingMessage = document.querySelector("#loading-message");
-  var modalContainer = document.querySelector("#modal-container");
+  const pokemonList = [];
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  const loadingMessage = document.querySelector("#loading-message");
+  const modalContainer = document.querySelector("#modal-container");
 
   // allows pokemon objects to be added (conditional to object.key format)
   function add(pokemon) {
@@ -19,15 +19,15 @@ var pokemonRepository = (function () {
 
   // this will display the name of each pokemon in a <li> format on the DOM
   function addListItem(pokemon) {
-    var pokemonAsList = document.querySelector(".pokemon-list");
-    var listItem = document.createElement("li");
-    var button = document.createElement("button");
+    const pokemonAsList = document.querySelector(".pokemon-list");
+    const listItem = document.createElement("li");
+    const button = document.createElement("button");
     button.innerText = pokemon.name;
     button.classList.add("pokemon-button");
     listItem.appendChild(button);
     pokemonAsList.appendChild(listItem);
     // here the code for the event listener to pull specific pokemon object
-    button.addEventListener("click", function (event) {
+    button.addEventListener("click", function () {
       showDetails(pokemon);
     });
   }
@@ -52,7 +52,7 @@ var pokemonRepository = (function () {
         hideLoadingMessage();
         // this is then returning the JSON objects for each
         json.results.forEach(function (item) {
-          var pokemon = {
+          const pokemon = {
             name: item.name,
             detailsUrl: item.url,
           };
@@ -65,7 +65,7 @@ var pokemonRepository = (function () {
   }
 
   function loadDetails(item) {
-    var url = item.detailsUrl;
+    const url = item.detailsUrl;
     return fetch(url)
       .then(function (response) {
         return response.json();
@@ -74,12 +74,12 @@ var pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
 
         item.types = [];
-        for (var i = 0; i < details.types.length; i++) {
+        for (let i = 0; i < details.types.length; i++) {
           item.types.push(" " + details.types[i].type.name);
         }
 
         item.abilities = [];
-        for (var i = 0; i < details.abilities.length; i++) {
+        for (let i = 0; i < details.abilities.length; i++) {
           item.abilities.push(" " + details.abilities[i].ability.name);
         }
 
@@ -97,29 +97,29 @@ var pokemonRepository = (function () {
     modalContainer.innerHTML = "";
 
     // creating the initial modal structure ready for the DOM
-    var modal = document.createElement("div");
+    const modal = document.createElement("div");
     modal.classList.add("modal");
 
     // this is creating the close button in modal
-    var closeButtonElement = document.createElement("button");
+    const closeButtonElement = document.createElement("button");
     closeButtonElement.classList.add("modal-close");
     closeButtonElement.innerText = "Close";
     closeButtonElement.addEventListener("click", hideModal);
 
-    var titleElement = document.createElement("h1");
+    const titleElement = document.createElement("h1");
     titleElement.innerText = item.name;
-    var imageElement = document.createElement("img");
+    const imageElement = document.createElement("img");
     imageElement.src = item.imageUrl;
-    var typesElement = document.createElement("div");
+    const typesElement = document.createElement("div");
     typesElement.innerHTML =
       '<p class="pokemon-details">Type: </p>' + " " + item.types;
-    var abilitiesElement = document.createElement("div");
+    const abilitiesElement = document.createElement("div");
     abilitiesElement.innerHTML =
       '<p class="pokemon-details">Ability: </p>' + " " + item.abilities;
-    var heightElement = document.createElement("div");
+    const heightElement = document.createElement("div");
     heightElement.innerHTML =
       '<p class="pokemon-details">Height: </p>' + " " + item.height / 10 + " m";
-    var weightElement = document.createElement("div");
+    const weightElement = document.createElement("div");
     weightElement.innerHTML =
       '<p class="pokemon-details">Weight: </p>' +
       " " +
@@ -152,7 +152,7 @@ var pokemonRepository = (function () {
 
   // adding the ability to click on the modal container to close
   modalContainer.addEventListener("click", (e) => {
-    var target = e.target;
+    const target = e.target;
     if (target === modalContainer) {
       hideModal();
     }
